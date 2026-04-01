@@ -1,0 +1,44 @@
+.movie-card {
+  background-color: #1a1b24; /* bg-card from App.css */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  background-color: #20212e; /* bg-card-hover from App.css */
+}
+
+.movie-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-info {
+  padding: 16px;
+  text-align: left;
+}
+
+.movie-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #eaeaf0;
+  line-height: 1.2;
+}
+
+.movie-year {
+  font-size: 0.9rem;
+  color: #e8b400; /* accent from App.css */
+  font-weight: 500;
+}
+
+/* Fallback placeholder for no image */
+.movie-poster[src*="placeholder"] {
+  background-color: #333;
+}

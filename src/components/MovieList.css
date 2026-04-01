@@ -1,0 +1,33 @@
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.loading-state,
+.error-state {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #9090aa; /* text-secondary from App.css */
+  padding: 40px;
+  font-weight: 400;
+}
+
+.error-state {
+  color: #ff5c5c; /* error color from App.css */
+}
+
+@media (max-width: 600px) {
+  .movie-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .movie-grid {
+    grid-template-columns: 1fr;
+  }
+}
