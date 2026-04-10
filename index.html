@@ -1,14 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="TechVault — Browse, search, and filter premium tech products with a sleek, interactive interface." />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
-    <title>TechVault — Premium Tech Catalog</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVault — Movie Discovery & Watchlist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">
+            <h1>CineVault</h1>
+            <span class="logo-icon">🎬</span>
+        </div>
+        <button id="theme-toggle" class="btn btn-icon" aria-label="Toggle Dark/Light Mode">
+            🌙
+        </button>
+    </header>
+
+    <main class="app-container">
+        <!-- Controls Section -->
+        <section class="controls-section">
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Search for movies (e.g. Inception)..." autocomplete="off" />
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="filters-wrapper">
+                <select id="genre-filter">
+                    <option value="">All Genres</option>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Thriller">Thriller</option>
+                </select>
+
+                <select id="year-filter">
+                    <option value="">All Years</option>
+                    <option value="2020s">2020s</option>
+                    <option value="2010s">2010s</option>
+                    <option value="2000s">2000s</option>
+                    <option value="older">Older</option>
+                </select>
+
+                <select id="sort-select">
+                    <option value="">Sort By</option>
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                    <option value="year-new">Year (New-Old)</option>
+                    <option value="year-old">Year (Old-New)</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="content-layout">
+            <!-- Left: Movie Grid -->
+            <section class="movies-section">
+                <!-- Loading Spinner -->
+                <div id="loading-spinner" class="spinner hidden"></div>
+
+                <!-- Empty State Message -->
+                <div id="empty-state" class="empty-state">
+                    <div id="empty-icon" class="empty-icon">🎬</div>
+                    <h2 id="empty-title">Start discovering</h2>
+                    <p id="empty-desc">Start typing to discover movies.</p>
+                </div>
+
+                <!-- Results Grid -->
+                <div id="movie-grid" class="movie-grid">
+                    <!-- Movie cards rendered dynamically here -->
+                </div>
+            </section>
+
+            <!-- Right: Sticky Sidebar for Watchlist -->
+            <aside class="sidebar">
+                <header class="sidebar-header">
+                    <h2>My Watchlist</h2>
+                    <span id="watchlist-count" class="badge">0</span>
+                </header>
+                
+                <div id="watchlist-empty" class="empty-state">
+                    <div class="empty-icon small-icon">🍿</div>
+                    <p>Your watchlist is empty.<br>Start adding some movies!</p>
+                </div>
+
+                <div id="watchlist-items" class="watchlist-items hidden">
+                    <!-- Watchlist items rendered dynamically here -->
+                </div>
+
+                <div class="sidebar-footer">
+                    <button id="btn-random-movie" class="btn btn-primary btn-block">
+                        🎲 Random Movie Night
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Random Movie Modal -->
+    <div id="random-movie-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="btn-close">&times;</button>
+            <h2 class="modal-title">Tonight's Pick!</h2>
+            <div id="random-movie-details" class="random-movie-details">
+                <!-- Selected random movie shown here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
 </html>
